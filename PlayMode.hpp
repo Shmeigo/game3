@@ -39,9 +39,15 @@ struct PlayMode : Mode {
 
 	glm::vec3 get_leg_tip_position();
 
-	//music coming from the tip of the leg (as a demonstration):
 	std::shared_ptr< Sound::PlayingSample > leg_tip_loop;
-	
+	std::shared_ptr< Sound::PlayingSample > scream0;
+	std::shared_ptr< Sound::PlayingSample > scream1;
+	std::shared_ptr< Sound::PlayingSample > scream2;
+	std::shared_ptr< Sound::PlayingSample > scream4;
+	std::shared_ptr< Sound::PlayingSample > scream5;
+	std::shared_ptr< Sound::PlayingSample > scream6;
+	std::shared_ptr< Sound::PlayingSample > scream7;
+	//scream3 was giving errors so I stopped using it	
 	//camera:
 	Scene::Camera *camera = nullptr;
 

@@ -1,8 +1,8 @@
-# (TODO: your game's title)
+Catharsis
 
-Author: (TODO: your name)
+Author: Jasper Lessiohadi - jlessioh
 
-Design: (TODO: In two sentences or fewer, describe what is new and interesting about your game.)
+Design: This game is very simple. The sole objective is to scream without anything holding you back.
 
 Screen Shot:
 
@@ -10,9 +10,9 @@ Screen Shot:
 
 How To Play:
 
-(TODO: describe the controls and (if needed) goals/strategy.)
+The controls are simply to press buttons 0 through 6 for various screams to hopefully relieve some stress.
 
-Sources: (TODO: list a source URL for any assets you did not create yourself. Make sure you have a license for the asset.)
+Sources: N/A
 
 This game was built with [NEST](NEST.md).
 

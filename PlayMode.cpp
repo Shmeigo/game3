@@ -36,6 +36,27 @@ Load< Scene > hexapod_scene(LoadTagDefault, []() -> Scene const * {
 	});
 });
 
+Load< Sound::Sample > scream0_sample(LoadTagDefault, []() -> Sound::Sample const * {
+	return new Sound::Sample(data_path("scream0.wav"));
+});
+Load< Sound::Sample > scream1_sample(LoadTagDefault, []() -> Sound::Sample const * {
+	return new Sound::Sample(data_path("scream1.wav"));
+});
+Load< Sound::Sample > scream2_sample(LoadTagDefault, []() -> Sound::Sample const * {
+	return new Sound::Sample(data_path("scream2.wav"));
+});
+Load< Sound::Sample > scream4_sample(LoadTagDefault, []() -> Sound::Sample const * {
+	return new Sound::Sample(data_path("scream4.wav"));
+});
+Load< Sound::Sample > scream5_sample(LoadTagDefault, []() -> Sound::Sample const * {
+	return new Sound::Sample(data_path("scream5.wav"));
+});
+Load< Sound::Sample > scream6_sample(LoadTagDefault, []() -> Sound::Sample const * {
+	return new Sound::Sample(data_path("scream6.wav"));
+});
+Load< Sound::Sample > scream7_sample(LoadTagDefault, []() -> Sound::Sample const * {
+	return new Sound::Sample(data_path("scream7.wav"));
+});
 Load< Sound::Sample > dusty_floor_sample(LoadTagDefault, []() -> Sound::Sample const * {
 	return new Sound::Sample(data_path("dusty-floor.opus"));
 });
@@ -70,8 +91,30 @@ PlayMode::~PlayMode() {
 bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
 
 	if (evt.type == SDL_KEYDOWN) {
+		// Sound::stop_all_samples();
 		if (evt.key.keysym.sym == SDLK_ESCAPE) {
 			SDL_SetRelativeMouseMode(SDL_FALSE);
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_0) { 
+			scream0 = Sound::play(*scream0_sample, 1.0f, 1.0f);
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_1) { 
+			scream1 = Sound::play(*scream1_sample, 1.0f, 1.0f);
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_2) { 
+			scream2 = Sound::play(*scream2_sample, 1.0f, 1.0f);
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_3) { 
+			scream4 = Sound::play(*scream4_sample, 1.0f, 1.0f);
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_4) { 
+			scream5 = Sound::play(*scream5_sample, 1.0f, 1.0f);
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_5) { 
+			scream6 = Sound::play(*scream6_sample, 1.0f, 1.0f);
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_6) { 
+			scream7 = Sound::play(*scream7_sample, 1.0f, 1.0f);
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_a) {
 			left.downs += 1;
@@ -204,7 +247,7 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS); //this is the default depth comparison function, but FYI you can change it.
 
-	scene.draw(*camera);
+	// scene.draw(*camera);
 
 	{ //use DrawLines to overlay some text:
 		glDisable(GL_DEPTH_TEST);
@@ -217,12 +260,12 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 		));
 
 		constexpr float H = 0.09f;
-		lines.draw_text("Mouse motion rotates camera; WASD moves; escape ungrabs mouse",
+		lines.draw_text("Press buttons 0-6 to scream into the void",
 			glm::vec3(-aspect + 0.1f * H, -1.0 + 0.1f * H, 0.0),
 			glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
 			glm::u8vec4(0x00, 0x00, 0x00, 0x00));
 		float ofs = 2.0f / drawable_size.y;
-		lines.draw_text("Mouse motion rotates camera; WASD moves; escape ungrabs mouse",
+		lines.draw_text("Press buttons 0-6 to scream into the void",
 			glm::vec3(-aspect + 0.1f * H + ofs, -1.0 + + 0.1f * H + ofs, 0.0),
 			glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
 			glm::u8vec4(0xff, 0xff, 0xff, 0x00));
